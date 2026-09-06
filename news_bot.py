@@ -10,6 +10,9 @@ SEEN_FILE = "seen.json"
 RSS_FEEDS = [
     "https://feeds.arstechnica.com/arstechnica/technology-lab",
     "https://techcrunch.com/category/artificial-intelligence/feed/",
+    "https://www.wired.com/feed/tag/ai/latest/rss",
+    "https://huggingface.co/blog/feed.xml",
+    "https://blogs.microsoft.com/ai/feed/",
 ]
 
 
@@ -30,48 +33,14 @@ def article_id(link):
     return hashlib.sha256(link.encode()).hexdigest()
 
 
-def get_image(entry):
-    # Try common RSS image formats
-    if entry.get("media_content"):
-        return entry["media_content"][0].get("url")
-
-    if entry.get("media_thumbnail"):
-        return entry["media_thumbnail"][0].get("url")
-
-    for link in entry.get("links", []):
-        if link.get("rel") == "enclosure":
-            if link.get("type", "").startswith("image/"):
-                return link.get("href")
-
-    return None
-
-
-def send_to_discord(title, link, source, summary, image_url):
+def send_to_discord(title, link, source):
     message = {
         "username": "CIPHER AI News",
         "embeds": [
             {
-                "author": {
-                    "name": "CIPHER's Network • AI NEWS"
-                },
-                "title": f"📰 {title[:250]}",
+                "title": title[:256],
                 "url": link,
-                "description": summary[:1000],
-                "fields": [
-                    {
-                        "name": "🏷️ Source",
-                        "value": source,
-                        "inline": True
-                    },
-                    {
-                        "name": "🌐 Article",
-                        "value": "[Read Full Article](" + link + ")",
-                        "inline": True
-                    }
-                ],
-                "thumbnail": {
-                    "url": image_url
-                } if image_url else None,
+                "description": f"📰 New article from **{source}**",
                 "footer": {
                     "text": "CIPHER's Network • AI News"
                 }
@@ -109,33 +78,11 @@ def main():
 
             source = feed.feed.get("title", "News Source")
 
-            summary = entry.get("summary", "").strip()
+            new_items.append((title, link, source, item_id))
 
-            if not summary:
-                summary = "A new article has been published."
-
-            image_url = get_image(entry)
-
-            new_items.append(
-                (
-                    title,
-                    link,
-                    source,
-                    summary,
-                    image_url,
-                    item_id
-                )
-            )
-    print(f"Found {len(new_items)} new articles")
-    for title, link, source, summary, image_url, item_id in new_items[:5]:
-        send_to_discord(
-            title,
-            link,
-            source,
-            summary,
-            image_url
-        )
-
+    # Keep the first few new articles so the channel doesn't get flooded.
+    for title, link, source, item_id in new_items[:5]:
+        send_to_discord(title, link, source)
         seen.add(item_id)
 
     save_seen(seen)
