@@ -29,8 +29,22 @@ def save_seen(seen):
 def article_id(link):
     return hashlib.sha256(link.encode()).hexdigest()
 
+def get_image(entry):
+    # Try common RSS image formats
+    if entry.get("media_content"):
+        return entry["media_content"][0].get("url")
 
-def send_to_discord(title, link, source, summary):
+    if entry.get("media_thumbnail"):
+        return entry["media_thumbnail"][0].get("url")
+
+    for link in entry.get("links", []):
+        if link.get("rel") == "enclosure":
+            if link.get("type", "").startswith("image/"):
+                return link.get("href")
+
+    return None
+
+def send_to_discord(title, link, source, summary, image_url):
     message = {
         "username": "CIPHER AI News",
         "embeds": [
@@ -53,6 +67,9 @@ def send_to_discord(title, link, source, summary):
                         "inline": True
                     }
                 ],
+                "thumbnail": {
+    "url": image_url
+} if image_url else None,
                 "footer": {
                     "text": "CIPHER's Network • AI News"
                 }
@@ -91,14 +108,15 @@ def main():
             source = feed.feed.get("title", "News Source")
 
             summary = entry.get("summary", "").strip()
+            image_url = get_image(entry)
 
 if not summary:
     summary = "A new article has been published."
 
-new_items.append((title, link, source, summary, item_id))
+new_items.append((title, link, source, summary, image_url, item_id))
 
-    for title, link, source, summary, item_id in new_items[:5]:
-    send_to_discord(title, link, source, summary)
+    for title, link, source, summary, image_url, item_id in new_items[:5]:
+    send_to_discord(title, link, source, summary, image_url)
     seen.add(item_id)
 
     save_seen(seen)
