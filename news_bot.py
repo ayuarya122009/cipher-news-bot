@@ -35,9 +35,27 @@ def send_to_discord(title, link, source):
         "username": "CIPHER AI News",
         "embeds": [
             {
-                "title": title[:256],
+                "author": {
+                    "name": "CIPHER's Network • AI NEWS"
+                },
+                "title": f"📰 {title[:250]}",
                 "url": link,
-                "description": f"📰 New article from **{source}**",
+                "description": (
+                    f"**{source}** has published a new AI/technology story.\n\n"
+                    "🔗 **Click the headline to read the full article.**"
+                ),
+                "fields": [
+                    {
+                        "name": "🏷️ Source",
+                        "value": source,
+                        "inline": True
+                    },
+                    {
+                        "name": "🌐 Article",
+                        "value": "[Read Full Article](" + link + ")",
+                        "inline": True
+                    }
+                ],
                 "footer": {
                     "text": "CIPHER's Network • AI News"
                 }
