@@ -68,8 +68,8 @@ def send_to_discord(title, link, source, summary, image_url):
                     }
                 ],
                 "thumbnail": {
-    "url": image_url
-} if image_url else None,
+                            "url": image_url
+                } if image_url else None,
                 "footer": {
                     "text": "CIPHER's Network • AI News"
                 }
