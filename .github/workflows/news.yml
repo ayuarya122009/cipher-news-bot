@@ -3,7 +3,7 @@ name: CIPHER AI News
 on:
   workflow_dispatch:
   schedule:
-  - cron: "15 16 * * *"
+  - cron: "4-59/5 * * * *"
 
 jobs:
   news:
