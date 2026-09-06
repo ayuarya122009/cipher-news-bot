@@ -30,7 +30,7 @@ def article_id(link):
     return hashlib.sha256(link.encode()).hexdigest()
 
 
-def send_to_discord(title, link, source):
+def send_to_discord(title, link, source, summary):
     message = {
         "username": "CIPHER AI News",
         "embeds": [
@@ -40,10 +40,7 @@ def send_to_discord(title, link, source):
                 },
                 "title": f"📰 {title[:250]}",
                 "url": link,
-                "description": (
-                    f"**{source}** has published a new AI/technology story.\n\n"
-                    "🔗 **Click the headline to read the full article.**"
-                ),
+                "description": summary[:1000],
                 "fields": [
                     {
                         "name": "🏷️ Source",
@@ -93,11 +90,16 @@ def main():
 
             source = feed.feed.get("title", "News Source")
 
-            new_items.append((title, link, source, item_id))
+            summary = entry.get("summary", "").strip()
 
-    for title, link, source, item_id in new_items[:5]:
-        send_to_discord(title, link, source)
-        seen.add(item_id)
+if not summary:
+    summary = "A new article has been published."
+
+new_items.append((title, link, source, summary, item_id))
+
+    for title, link, source, summary, item_id in new_items[:5]:
+    send_to_discord(title, link, source, summary)
+    seen.add(item_id)
 
     save_seen(seen)
 
