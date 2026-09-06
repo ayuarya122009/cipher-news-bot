@@ -126,7 +126,7 @@ def main():
                     item_id
                 )
             )
-
+    print(f"Found {len(new_items)} new articles")
     for title, link, source, summary, image_url, item_id in new_items[:5]:
         send_to_discord(
             title,
