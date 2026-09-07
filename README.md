@@ -1,4 +1,4 @@
-# DISCORD News Bot
+# CIPHER News Bot
 
 > **Automated AI & Technology News Intelligence for Discord**
 
