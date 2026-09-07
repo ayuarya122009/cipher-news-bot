@@ -155,7 +155,7 @@ discord-news-bot/
 ## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/discord-news-bot.git
+git clone https://github.com/ayuarya122009/discord-news-bot.git
 cd discord-news-bot
 ```
 
