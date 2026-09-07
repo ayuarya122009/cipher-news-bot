@@ -1,18 +1,18 @@
-# CIPHER News Bot
+# DISCORD News Bot
 
 > **Automated AI & Technology News Intelligence for Discord**
 
-CIPHER News Bot is an automated Discord news system that monitors trusted AI, cybersecurity, technology, and research sources through RSS feeds and delivers fresh articles directly to your Discord server.
+DISCORD News Bot is an automated Discord news system that monitors trusted AI, cybersecurity, technology, and research sources through RSS feeds and delivers fresh articles directly to your Discord server.
 
-Built for **CIPHER's Network**, the bot is designed to be lightweight, reliable, easy to customize, and fully automatable through **GitHub Actions**.
+Built for **DISCORD's Network**, the bot is designed to be lightweight, reliable, easy to customize, and fully automatable through **GitHub Actions**.
 
 ---
 
-## ✦ What is CIPHER News Bot?
+## ✦ What is DISCORD News Bot?
 
-CIPHER News Bot turns your Discord server into a continuously updated technology news hub.
+DISCORD News Bot turns your Discord server into a continuously updated technology news hub.
 
-Instead of manually checking dozens of websites, CIPHER News Bot:
+Instead of manually checking dozens of websites, DISCORD News Bot:
 
 **RSS Sources → Fetch → Process → Filter → Format → Discord**
 
@@ -128,7 +128,7 @@ The project can run through GitHub Actions, making it suitable for lightweight a
 # 📁 Project Structure
 
 ```text
-cipher-news-bot/
+discord-news-bot/
 │
 ├── .github/
 │   └── workflows/
@@ -155,8 +155,8 @@ cipher-news-bot/
 ## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/cipher-news-bot.git
-cd cipher-news-bot
+git clone https://github.com/YOUR-USERNAME/discord-news-bot.git
+cd discord-news-bot
 ```
 
 ---
@@ -191,7 +191,7 @@ pip install -r requirements.txt
 
 # 🔐 Discord Configuration
 
-CIPHER News Bot needs a way to publish messages to your Discord server.
+DISCORD News Bot needs a way to publish messages to your Discord server.
 
 Depending on your implementation, this can be done using a:
 
@@ -239,7 +239,7 @@ You can add as many compatible RSS sources as your implementation supports.
 
 # 🤖 Recommended AI News Sources
 
-CIPHER can be configured to monitor sources covering:
+DISCORD can be configured to monitor sources covering:
 
 ### Artificial Intelligence
 
@@ -297,14 +297,14 @@ A successful run should:
 
 # ☁️ GitHub Actions Automation
 
-One of the main goals of CIPHER News Bot is **zero-maintenance scheduled execution**.
+One of the main goals of DISCORD News Bot is **zero-maintenance scheduled execution**.
 
 GitHub Actions can periodically execute the news workflow automatically.
 
 Example workflow:
 
 ```yaml
-name: CIPHER News Bot
+name: DISCORD News Bot
 
 on:
   schedule:
@@ -328,7 +328,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run CIPHER News Bot
+      - name: Run DISCORD News Bot
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           RSS_FEEDS: ${{ secrets.RSS_FEEDS }}
@@ -342,7 +342,7 @@ The workflow should also support:
 ```text
 Actions
    ↓
-CIPHER News Bot
+DISCORD News Bot
    ↓
 Run workflow
 ```
@@ -401,7 +401,7 @@ __pycache__/
 
 # 🧠 News Processing Flow
 
-CIPHER News Bot follows a simple pipeline:
+DISCORD News Bot follows a simple pipeline:
 
 ```text
 1. Start
@@ -431,7 +431,7 @@ This keeps the system modular and makes future improvements easier.
 
 # 💬 Example Discord Output
 
-A typical CIPHER news message can look like:
+A typical DISCORD news message can look like:
 
 ```text
 🤖 AI NEWS
@@ -454,7 +454,7 @@ The exact message format depends on the current implementation.
 
 # 🛡️ Reliability
 
-CIPHER News Bot is designed with automation reliability in mind.
+DISCORD News Bot is designed with automation reliability in mind.
 
 Recommended production protections include:
 
@@ -488,7 +488,7 @@ Network errors, malformed feeds, and Discord API failures should be handled grac
 
 # 📊 Scaling the System
 
-CIPHER News Bot can grow beyond a basic RSS publisher.
+DISCORD News Bot can grow beyond a basic RSS publisher.
 
 A possible future architecture:
 
@@ -515,14 +515,14 @@ A possible future architecture:
               DISCORD FORMATTER
                       │
                       ▼
-                 CIPHER SERVER
+                 DISCORD SERVER
 ```
 
 ---
 
 # 🔮 Roadmap
 
-CIPHER News Bot is designed to evolve into a complete **technology intelligence system**.
+DISCORD News Bot is designed to evolve into a complete **technology intelligence system**.
 
 ### Phase 1 — Core Automation
 
@@ -541,7 +541,7 @@ CIPHER News Bot is designed to evolve into a complete **technology intelligence 
 * [ ] Source categorization
 * [ ] Article relevance scoring
 
-### Phase 3 — CIPHER Intelligence
+### Phase 3 — DISCORD Intelligence
 
 * [ ] AI news summaries
 * [ ] Cybersecurity threat alerts
@@ -576,7 +576,7 @@ CIPHER News Bot is designed to evolve into a complete **technology intelligence 
 
 # 🧩 Possible Discord Channel Architecture
 
-For CIPHER's Network, news can eventually be separated into dedicated channels:
+For DISCORD's Network, news can eventually be separated into dedicated channels:
 
 ```text
 📰 NEWS
@@ -644,7 +644,7 @@ Contributions are welcome.
 
 ```bash
 git clone <repository>
-cd cipher-news-bot
+cd discord-news-bot
 
 git checkout -b feature/your-feature
 
@@ -676,7 +676,7 @@ You can contribute:
 
 # 📜 License
 
-Choose the license that matches how you want CIPHER News Bot to be used.
+Choose the license that matches how you want DISCORD News Bot to be used.
 
 For example:
 
@@ -706,14 +706,14 @@ PRIVATE_KEY
 
 ---
 
-# 🌐 CIPHER's Network
+# 🌐 DISCORD's Network
 
-CIPHER News Bot is a component of **CIPHER's Network** — a technology and cybersecurity-focused Discord community.
+DISCORD News Bot is a component of **DISCORD's Network** — a technology and cybersecurity-focused Discord community.
 
 The broader ecosystem can include:
 
 ```text
-CIPHER's Network
+DISCORD's Network
 │
 ├── 🤖 AI News
 ├── 🔐 Cybersecurity
@@ -730,11 +730,11 @@ The goal is simple:
 
 ---
 
-# ⭐ Why CIPHER News Bot?
+# ⭐ Why DISCORD News Bot?
 
 Most news bots simply forward RSS entries.
 
-CIPHER is intended to become more than that.
+DISCORD is intended to become more than that.
 
 The long-term vision is a system that can understand:
 
@@ -793,7 +793,7 @@ That turns a basic RSS bot into an **automated intelligence pipeline**.
 
 ## 📌 Status
 
-**Project:** CIPHER News Bot
+**Project:** DISCORD News Bot
 **Status:** 🟢 Active Development
 **Automation:** GitHub Actions
 **Primary Platform:** Discord
@@ -803,7 +803,7 @@ That turns a basic RSS bot into an **automated intelligence pipeline**.
 
 <p align="center">
 
-### ⚡ CIPHER News Bot
+### ⚡ DISCORD News Bot
 
 **Automate the feed. Filter the noise. Deliver the signal.**
 
